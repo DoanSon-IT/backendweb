@@ -21,8 +21,8 @@ public class DataInitializer implements CommandLineRunner {
         // Create default admin user if not exists
         if (!userRepository.existsByUsername("admin")) {
             User admin = new User();
-            admin.setUsername("admin");
-            admin.setPassword(passwordEncoder.encode("admin123"));
+            admin.setUsername("sondv76");
+            admin.setPassword(passwordEncoder.encode("Son@07062003"));
             admin.setEmail("admin@blog.com");
             admin.setRole("ADMIN");
             userRepository.save(admin);

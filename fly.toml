@@ -1,0 +1,31 @@
+# 🎄 Fly.io configuration cho Spring Boot Backend
+app = "sondn-blog-api"
+primary_region = "sin"  # Singapore - gần Việt Nam nhất
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  PORT = "8080"
+  SPRING_PROFILES_ACTIVE = "production"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = false
+  auto_start_machines = true
+  min_machines_running = 1
+  processes = ["app"]
+
+  [[http_service.checks]]
+    grace_period = "30s"
+    interval = "15s"
+    method = "GET"
+    timeout = "5s"
+    path = "/actuator/health"
+
+[[vm]]
+  cpu_kind = "shared"
+  cpus = 1
+  memory_mb = 512
+
